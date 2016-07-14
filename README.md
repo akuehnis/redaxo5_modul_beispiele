@@ -4,7 +4,7 @@
 
 ### Textzeile
 Eingabe:
-```
+```php
 <fieldset class="form-horizontal">
   <div class="form-group">
     <label class="col-sm-2 control-label" for="text_1">Text 1</label>
@@ -15,13 +15,13 @@ Eingabe:
 </fieldset>
 ```
 Ausgabe:
-```
+```php
 REX_VALUE[1]
 ```
 
 ### Mehrzeiliger Text
 Eingabe:
-```
+```php
 <fieldset class="form-horizontal">
   <div class="form-group">
     <label class="col-sm-2 control-label" for="text_2">Text 2</label>
@@ -32,14 +32,14 @@ Eingabe:
 </fieldset>
 ```
 Ausgabe:
-```
+```php
 <!-- Ohne weitere Angaben werden Umbrüche in <br/> umgewandelt (nl2br) -->
 REX_VALUE[2]
 ```
 
 ### Auswahlfeld (Dropdown)
 Eingabe:
-```
+```php
 <?php
 $options = array(
   ''                    => 'Default',
@@ -75,7 +75,7 @@ Gewählt: REX_VALUE[20]
 
 ### Radio-Auswahl
 Eingabe:
-```
+```php
 <?php
 $options = array(
   'wahl1'           => 'Wahl 1',
@@ -102,17 +102,17 @@ foreach($options as $key=>$option){
 </fieldset>
 ```
 Ausgabe:
-```
+```php
 Gewählt: REX_VALUE[19]
 ```
 
 ### Ein Bild
 Eingabe
-```
+```php
 REX_MEDIA[id=1 widget=1 preview=1]
 ```
 Ausgabe
-```
+```php
 <img src="<?php echo rex_url::media("REX_MEDIA[id=1]");?>"
      width="REX_MEDIA[id=1 field=width]"
      height="REX_MEDIA[id=1 field=height]"
@@ -121,11 +121,11 @@ Ausgabe
 
 ### Mehrere Bilder
 Eingabe
-```
+```php
 REX_MEDIALIST[id=1 widget=1]
 ```
 Ausgabe
-```
+```php
 <?php 
 if('' == "REX_MEDIALIST[id=1]"):
   $images = array();
@@ -144,11 +144,11 @@ foreach($images as $image) {
 
 ### Link zu Seite
 Eingabe
-```
+```php
 REX_LINK[id=1 widget=1]
 ```
 Ausgabe
-```
+```php
 <?php
 $art = rex_article::get("REX_LINK[id=1]");
 if ($art) {
@@ -162,12 +162,12 @@ echo $art->getValue('name');?>" /><?php echo $art->getValue("name");?></a>
 
 ### Linkliste
 Eingabe
-```
+```php
 REX_LINKLIST[id=1 widget=1]
 ```
 
 Ausgabe
-```
+```php
 <?php
 if ('' == "REX_LINKLIST[id=1]"){
     $articles = array();
