@@ -92,7 +92,7 @@ foreach($options as $key=>$option){
 <label><input type="radio" name="REX_INPUT_VALUE[19]" value="<?php echo $key;?>"
     <?php                          
     if( "REX_VALUE[19]" == $key){
-        echo ' selcted="selected"';
+        echo ' selected="selected"';
     }
     ?> /> <?php echo $option;?></label>
 </div>
