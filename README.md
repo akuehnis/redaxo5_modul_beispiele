@@ -35,6 +35,9 @@ Ausgabe:
 ```php
 <!-- Ohne weitere Angaben werden Umbrüche in <br/> umgewandelt (nl2br) -->
 REX_VALUE[2]
+
+<!-- Ausgabe als HTML -->
+REX_VALUE[id="2" output="html"]
 ```
 
 ### Auswahlfeld (Dropdown)
