@@ -116,10 +116,14 @@ REX_MEDIA[id=1 widget=1 preview=1]
 ```
 Ausgabe
 ```php
-<img src="<?php echo rex_url::media("REX_MEDIA[id=1]");?>"
-     width="REX_MEDIA[id=1 field=width]"
-     height="REX_MEDIA[id=1 field=height]"
-     alt="REX_MEDIA[id=1 field=title]" />
+<?php if(rex::isBackend()):?>
+    <img src="index.php?rex_media_type=rex_mediapool_preview&rex_media_file=REX_MEDIA[id=1]" />
+<?php elseif ('' != 'REX_MEDIA[id=1]'): ?>
+  <img src="<?php echo rex_url::media("REX_MEDIA[id=1]");?>"
+       width="REX_MEDIA[id=1 field=width]"
+       height="REX_MEDIA[id=1 field=height]"
+       alt="REX_MEDIA[id=1 field=title]" />
+<?php endif; ?>
 ```
 
 ### Mehrere Bilder
