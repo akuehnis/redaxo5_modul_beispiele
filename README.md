@@ -159,12 +159,12 @@ Ausgabe
 <?php
 $art = rex_article::get("REX_LINK[id=1]");
 if ($art) {
+  $href = rex_getUrl("REX_LINK[id=1]");
+  $title = $art->getValue('title');
+  $name = $art->getValue('name');
+  echo '<a href="'.$href.'" title="'.$title.'" >'.$name.'</a>';
+}
 ?>
-<a href="<?php echo rex_url::frontendController(array(
-'article_id' => "REX_LINK[id=1]",
-));?>" title="<?php
-echo $art->getValue('name');?>" /><?php echo $art->getValue("name");?></a>
-<?php } ?>
 ```
 
 ### Linkliste
@@ -184,9 +184,7 @@ if ('' == "REX_LINKLIST[id=1]"){
 foreach($articles as $article_id){
     $art = rex_article::get($article_id);
     if (null !== $art){
-        $href = rex_url::frontendController(array(
-               'article_id' => $article_id,
-              ));
+        $href = rex_getUrl($article_id);
         $title = $art->getValue('title');
         $name  = $art->getValue('name');
 
