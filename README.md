@@ -140,12 +140,16 @@ else:
   $images = explode(',', "REX_MEDIALIST[id=1]");
 endif;
 foreach($images as $image) { 
+if (rex::isBackend()):?>
+    <img src="index.php?rex_media_type=rex_mediapool_preview&rex_media_file=<?php echo $image;?>" />
+<?php else: 
   $medium = rex_media::get($image);
 ?>
 <img src="<?php echo $medium->getUrl();?>" alt="<?php
   echo $medium->getTitle();?>" height="<?php
   echo $medium->getHeight();?>" width="<?php
   echo $medium->getWidth();?>" />
+<?php endif;?>
 <?php } ?> 
 ```
 
