@@ -203,3 +203,28 @@ foreach($articles as $article_id){
 }
 ?>
 ```
+### Weiterleitung extern
+Eingabe
+```php
+<fieldset class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="text_1">URL</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="text_1" name="REX_INPUT_VALUE[1]" value="REX_VALUE[1]" />
+    </div>
+  </div>
+</fieldset>
+```
+
+Ausgabe
+```php
+<?php 
+if (rex::isBackend()):
+    echo 'Weiterleitung nach: REX_VALUE[1]';
+else:
+    header("Location: REX_VALUE[1]");
+    die();
+endif;
+?>
+```
+
