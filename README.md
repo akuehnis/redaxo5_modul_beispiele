@@ -221,7 +221,7 @@ Ausgabe
 <?php 
 if (rex::isBackend()):
     echo 'Weiterleitung nach: REX_VALUE[1]';
-else:
+elseif (!empty('REX_VALUE[1]')):
     header("Location: REX_VALUE[1]");
     die();
 endif;
