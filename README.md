@@ -228,3 +228,10 @@ endif;
 ?>
 ```
 
+### Profil für Redactor2 Editor
+
+```
+fullscreen,alignment,bold,italic,underline,deleted,sub,sup,unorderedlist,orderedlist,blockquote,table,cleaner,grouplink[email|external|internal|media],heading1,heading2,heading3,heading4,horizontalrule,media,paragraph,properties,source
+```
+
+
