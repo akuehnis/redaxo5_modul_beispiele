@@ -95,7 +95,7 @@ foreach($options as $key=>$option){
 <label><input type="radio" name="REX_INPUT_VALUE[19]" value="<?php echo $key;?>"
     <?php                          
     if( "REX_VALUE[19]" == $key){
-        echo ' selected="selected"';
+        echo ' checked="checked"';
     }
     ?> /> <?php echo $option;?></label>
 </div>
@@ -203,6 +203,35 @@ foreach($articles as $article_id){
 }
 ?>
 ```
+### Weiterleitung intern
+Eingabe
+```php
+<fieldset class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="text_2">Artikel wird weitergeleitet nach *</label>
+    <div class="col-sm-10">
+      REX_LINK[id=1 widget=1]
+    </div>
+  </div>
+</fieldset>
+```
+
+Ausgabe
+```php
+<?php
+  if (!rex::isBackend() && rex_article::getCurrentId() != 'REX_LINK[id=1]' && 'REX_LINK[id=1]' != '') {
+    if (REX_LINK[id=1] != 0) {
+      rex_redirect(REX_LINK[id=1], rex_clang::getCurrentId());
+    }
+  }
+  else {
+    if (REX_LINK[id=1] != '') {
+      echo "Weiterleitung nach <a href='index.php?page=content&article_id=REX_LINK[id=1]&mode=edit'>Artikel REX_LINK[id=1]</a>";
+    }
+  }
+?>
+```
+
 ### Weiterleitung extern
 Eingabe
 ```php
