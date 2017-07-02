@@ -257,6 +257,39 @@ endif;
 ?>
 ```
 
+### Mblock Personenliste
+Eingabe
+```php
+<?php
+$id = 1; // Mblock wird das Feld value1 in der DB nutzen 
+$mform = new MForm(); 
+$mform->addFieldset('Person'); 
+$mform->addTextField("$id.0.title", array('label'=>'Bezeichnung')); 
+$mform->addTextareaField("$id.0.description", array('label'=>'Beschreibung')); 
+$mform->addMediaField(1, array('label'=>'Bild')); 
+$args = array();
+echo MBlock::show($id, $mform->show(), $args);
+?>
+```
+
+Ausgabe
+```php
+<?php $list = rex_var::toArray("REX_VALUE[1]");?>
+<?php foreach ($list as $row):?>
+<div class="row person" >
+    <div class="col-xs-3">
+    <img class="img-circle img-responsive" src="index.php?rex_media_type=person&rex_media_file=<?php echo 
+    $row['REX_MEDIA_1'];?>" />
+    </div>
+    <div class="col-xs-9 person_text">
+    <h6><?php echo $row['title'];?></h6>
+    <p><?php echo nl2br($row['description']);?></p>
+    </div>
+</div>
+<?php endforeach;?>
+```
+
+
 ### Profil für Redactor2 Editor
 
 ```
