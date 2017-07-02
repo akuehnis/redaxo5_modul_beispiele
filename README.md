@@ -258,6 +258,9 @@ endif;
 ```
 
 ### Mblock Personenliste
+
+Das Addon mblock muss installiert sein.
+
 Eingabe
 ```php
 <?php
