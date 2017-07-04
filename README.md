@@ -220,8 +220,8 @@ Ausgabe
 ```php
 <?php
   if (!rex::isBackend() && rex_article::getCurrentId() != 'REX_LINK[id=1]' && 'REX_LINK[id=1]' != '') {
-    if (REX_LINK[id=1] != 0) {
-      rex_redirect(REX_LINK[id=1], rex_clang::getCurrentId());
+    if (intval(REX_LINK[id=1]) != 0) {
+      rex_redirect(intval(REX_LINK[id=1]), rex_clang::getCurrentId());
     }
   }
   else {
