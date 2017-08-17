@@ -109,6 +109,45 @@ Ausgabe:
 Gewählt: REX_VALUE[19]
 ```
 
+### Formularauswahl (für Form-In-Module Addon)
+
+Eingabe:
+```php
+<?php
+$db = rex_sql::factory();
+$db->setQuery("SELECT * FROM ".
+  rex::getTable('form_in_module')."
+  ORDER BY title ASC");
+$rows = $db->getArray();
+foreach ($rows as $row){
+  $options[$row['form_id']] = $row['title'];
+}
+
+?>
+<fieldset class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="select_example">Formular</label>
+    <div class="col-sm-10">
+      <select id="select_example" name="REX_INPUT_VALUE[1]" class="form-control">
+<?php
+foreach($options as $key=>$option){
+    echo '<option value="'.$key.'"';
+    if( "REX_VALUE[1]" == $key){
+        echo ' selected="selected"';
+    }
+    echo '>'.$option.'</option>';
+}
+?></select>
+    </div>
+  </div>
+</fieldset>
+```
+
+Ausgabe:
+```php
+<?php echo FormInModule::getForm(intval('REX_VALUE[1]'));?>
+```
+
 ### Ein Bild
 Eingabe
 ```php
