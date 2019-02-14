@@ -338,4 +338,38 @@ Ausgabe
 fullscreen,alignment,bold,italic,underline,deleted,sub,sup,unorderedlist,orderedlist,blockquote,table,cleaner,grouplink[email|external|internal|media],heading1,heading2,heading3,heading4,horizontalrule,media,paragraph,properties,source
 ```
 
+### Medienkategorie ###
 
+Eingabe, erstellen der Auswahl für ein Select-Feld
+```
+if (!function_exists('buildMediaCateogryChoices')){
+    function buildMediaCateogryChoices($category = null, $level = 0){
+        static $choices = [];
+        if (null == $category){
+            $children = rex_media_category::getRootcategories();
+        } else {
+            $choices[$category->getId()] = str_repeat('-', $level).$category->getName();
+            $children = $category->getChildren();
+        }
+        foreach ($children as $child){
+            buildMediaCateogryChoices($child, $level+1);
+        }
+        return $choices;
+    }
+}
+$cat_choices = buildMediaCateogryChoices();
+```
+
+Ausgabe (nur ein Schnipsel)
+```
+...
+
+$category = rex_media_category::get(intval($category_id));
+$list = $category->getMedia();
+foreach ($list as $medium):?>
+  <img src="<?php echo rex_url::media($medium->getFileName();?>" alt="<?php echo $medium->getTitle();?>" />
+<?php endforeach;?>
+...
+
+
+```
