@@ -358,6 +358,13 @@ if (!function_exists('buildMediaCateogryChoices')){
     }
 }
 $cat_choices = buildMediaCateogryChoices();
+
+// Baue Formular (hier mit MForm)
+$mform = new MForm();
+$mform->addFieldset('Auswahl');
+$mform->addSelectField("1", $cat_choices, array('label'=>'Kategorie'));
+
+echo $mform->show();
 ```
 
 Ausgabe (nur ein Schnipsel)
