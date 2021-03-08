@@ -68,7 +68,5 @@ Informationen zu den Zeilen:
 * html|gccallback|...: Callback-Funktion für Google Recaptcha. Mehr Infos:https://developers.google.com/recaptcha/docs/v3. 
 * html|gcscript|...: Google-Recaptcha API-Script. Falls dieses schon im Theme geladen wird sollte diese Zeile weg gelassen werden.
 * submit|name|... : wird hinzugefügt, damit Yform nicht automatisch einen Senden-Button anhängt. Die Klasse 'd-none' blendet den Button aus, gilt aber nur für Bootstrap 4 CSS.
-* validate|customfunction|...: Die Validierungs-Funktion
+* validate|customfunction|...: Die Validierungs-Funktion. RECAPTCHA-PRIVATE-KEY ist zu ersetzen.
 
-
-Mehr Infos zur Client-Seitigen implementierung: https://developers.google.com/recaptcha/docs/v3.
