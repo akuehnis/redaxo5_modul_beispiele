@@ -24,7 +24,8 @@ class GoogleCaptchaV3
         $url = "https://www.google.com/recaptcha/api/siteverify";
 
         if (!isset($_POST['g-recaptcha-response'])) {
-            return false;
+            // is invalid
+            return true;
         }
 
         $data = [
@@ -43,8 +44,10 @@ class GoogleCaptchaV3
         $ret = json_decode($server_output, true);
 
         if (is_array($ret) && isset($ret['success']) && true == $ret['success']) {
+            // is valid
             return false;
         }
+        // is invalid
         return true;
 
     }
