@@ -86,7 +86,7 @@ $fieldset->addSelectField("2.boxLayout", [
     "fluid" => "Hintergrund und Inhalt bis Aussen"
     ], 
     ['label' => 'Block Layout']);
-    $mform->addTabElement('Inhalt', $fieldset, /*active*/ false, /*align right*/ false);
+$mform->addTabElement('Layout', $fieldset, /*active*/ false, /*align right*/ false);
 
 echo $mform->show();
 ?>
