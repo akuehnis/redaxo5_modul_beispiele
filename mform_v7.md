@@ -21,11 +21,30 @@ echo $mform->show();
 
 Output
 ```
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col">REX_VALUE[id="1" output="html"]</div>
-        </div>
-    </div>
-</section>
+
+<div class="container">
+    REX_VALUE[id="1" output="html"]
+</div>
+
+```
+
+### Bild
+
+Input 
+
+```
+<?php
+$mform = MForm::factory();
+$mform->addMediaField(1, array('label'=>'Bild'));
+echo $mform->show();
+``` 
+
+Output
+
+```
+<?php if ('' != REX_MEDIA[id=1]):?>
+<div class="container">
+    <img src="/media/REX_MEDIA[id=1]" class="img-fluid" />
+</div>
+<?php endif; ?>
 ```
