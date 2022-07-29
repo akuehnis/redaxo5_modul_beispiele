@@ -4,6 +4,14 @@
 
 Google Recaptcha V3 mit Yform Formbuilder: https://github.com/akuehnis/redaxo5_modul_beispiele/blob/master/yform_google_recaptcha_v3.md
 
+## Beispiele für MForm Version 7
+
+MForm ist ein tolles Addon um die Eingabeformulare einheitlich zu gestalten. In der Version 7 wurde der Dokumentationsstil auf
+die Darstellung als Verkettung über gegangen. 
+
+Mir gefällt die traditionellere Darstellung besser, ich lege darum hier ein paar Beispiele an:
+https://github.com/akuehnis/redaxo5_modul_beispiele/blob/master/mform_v7.md
+
 
 ## Modulbeispiele
 
