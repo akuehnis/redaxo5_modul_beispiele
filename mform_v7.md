@@ -21,8 +21,6 @@ echo $mform->show();
 
 Output
 ```
-<?php
-
 <section>
     <div class="container">
         <div class="row">
@@ -30,5 +28,4 @@ Output
         </div>
     </div>
 </section>
-?>
 ```
