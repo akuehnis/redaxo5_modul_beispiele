@@ -83,7 +83,7 @@ $fieldset->addSelectField("2.insetY", [
 $fieldset->addSelectField("2.boxLayout", [
     "boxed" => "Boxed",
     "boxed_bg_fluid" => "Boxed, Hintergrund bis Aussen",
-    //"fluid" => "Hintergrund und Inhalt bis Aussen"
+    "fluid" => "Hintergrund und Inhalt bis Aussen"
     ], 
     ['label' => 'Block Layout']);
     $mform->addTabElement('Inhalt', $fieldset, /*active*/ false, /*align right*/ false);
