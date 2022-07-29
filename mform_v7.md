@@ -42,7 +42,7 @@ echo $mform->show();
 Output
 
 ```
-<?php if ('' != REX_MEDIA[id=1]):?>
+<?php if ('' != "REX_MEDIA[id=1]"):?>
 <div class="container">
     <img src="/media/REX_MEDIA[id=1]" class="img-fluid" />
 </div>
