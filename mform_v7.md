@@ -49,6 +49,33 @@ Output
 <?php endif; ?>
 ```
 
+### Select
+
+Input 
+
+```
+$group = MForm::factory();
+// addSelectField($id, array $options, array $attributes, int $size, string $defaultValue)
+$group->addSelectField(
+    "2.type", 
+    [
+        'news' => 'News', 
+        'customer' => 'Kunde', 
+        'event' => 'Event'
+        
+    ],
+    [
+        'label' => 'Typ', 
+        'default' => 'event'
+    ], 
+    1,
+    'event');
+$mform = MForm::factory();
+$mform->addFieldsetArea('Typ-Auswahl', $group);
+echo $mform->show();
+```
+
+
 ### Tabs im Eingabebereich
 
 Input 
