@@ -74,7 +74,13 @@ $mform = MForm::factory();
 $mform->addFieldsetArea('Typ-Auswahl', $group);
 echo $mform->show();
 ```
+Output
 
+```
+<?php 
+dump(rex_var::toArray('REX_VALUE[id=2]'));
+?>
+```
 
 ### Tabs im Eingabebereich
 
