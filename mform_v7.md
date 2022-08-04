@@ -49,6 +49,17 @@ Output
 <?php endif; ?>
 ```
 
+### Mehrere Bilder
+
+Input 
+
+```
+<?php
+$mform = MForm::factory();
+$mform->addImagelistField(2, ['label' => 'Image List'])
+echo $mform->show();
+``` 
+
 ### Select
 
 Input 
