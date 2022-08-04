@@ -60,6 +60,12 @@ $mform->addImagelistField(2, ['label' => 'Image List'])
 echo $mform->show();
 ``` 
 
+Output
+
+```
+dump('REX_MEDIALIST[id=2]');
+```
+
 ### Select
 
 Input 
