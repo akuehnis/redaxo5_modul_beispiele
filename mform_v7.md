@@ -58,6 +58,7 @@ Input
 $mform = MForm::factory();
 $mform->addImagelistField(2, ['label' => 'Image List'])
 echo $mform->show();
+?>
 ``` 
 
 Output
@@ -90,12 +91,42 @@ $group->addSelectField(
 $mform = MForm::factory();
 $mform->addFieldsetArea('Typ-Auswahl', $group);
 echo $mform->show();
+?>
 ```
 Output
 
 ```
 <?php 
 dump(rex_var::toArray('REX_VALUE[id=2]'));
+?>
+```
+
+### Weiterleitung intern
+
+Input
+
+``` 
+<?php 
+$fieldset = Mform::factory();
+$fieldset->addLinkField(1, ['label' => 'Zielseite']);
+$mform = MForm::factory();
+$mform->addFieldsetArea('Weiterleitung', $fieldset);
+echo $mform->show();
+?>
+```
+Output
+```
+<?php
+  if (!rex::isBackend() && rex_article::getCurrentId() != 'REX_LINK[id=1]' && 'REX_LINK[id=1]' != '') {
+    if (intval(REX_LINK[id=1]) != 0) {
+      rex_redirect(intval(REX_LINK[id=1]), rex_clang::getCurrentId());
+    }
+  }
+  else {
+    if (REX_LINK[id=1] != '') {
+      echo "Weiterleitung nach <a href='index.php?page=content&article_id=REX_LINK[id=1]&mode=edit'>Artikel REX_LINK[id=1]</a>";
+    }
+  }
 ?>
 ```
 
