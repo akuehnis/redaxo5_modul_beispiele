@@ -56,7 +56,7 @@ Input
 ```
 <?php
 $mform = MForm::factory();
-$mform->addImagelistField(2, ['label' => 'Image List'])
+$mform->addImagelistField(2, ['label' => 'Image List']);
 echo $mform->show();
 ?>
 ``` 
