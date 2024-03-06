@@ -73,3 +73,53 @@ Informationen zu den Zeilen:
 * submit|name|... : wird hinzugefügt, damit Yform nicht automatisch einen Senden-Button anhängt. Die Klasse 'd-none' blendet den Button aus, gilt aber nur für Bootstrap 4 CSS.
 * validate|customfunction|...: Die Validierungs-Funktion. RECAPTCHA-PRIVATE-KEY ist zu ersetzen.
 
+## Yform-Formbuilder als Modal-Formular
+
+Wenn das Formular in einem Modal-Window geladen wird, dann muss die Captcha-Callback-Funktion nicht submit() aufrufen sondern die entsprechende Javascript Funktion welche den Ajax-Call macht.
+
+```
+html|gcv3|gcv3|<button class="btn btn-primary g-recaptcha" data-sitekey="RECAPTCHA-PUBLIC-KEY" data-callback='sendeKontaktFormular' data-action='submit'>Senden</button>
+html|gccallback|gccallback|<script>function sendeKontaktFormular(token) { onCtaModalSubmit(); }</script>
+html|gcscript|gcscript|<script src="https://www.google.com/recaptcha/api.js"></script>
+submit|name|Senden (versteckt)||||d-none
+validate|customfunction|gcv3|GoogleCaptchaV3::isInvalidValidCaptcha|RECAPTCHA-PRIVATE-KEY|Captcha-Prüfung fehl geschlagen|normal
+```
+
+Dazu zum Beispiel Javascript wie folgt: 
+```
+// Modal-Ajax-Kontaktformular
+
+const onCtaModalLoad = async function(evt){
+	evt.preventDefault();
+	let modal = document.getElementById("ctaModal")
+	let url = modal.getAttribute("data-ajax-action")
+	let response = await fetch(url)
+	let content = await response.text()
+	$("#ctaModalBody").html(content)
+	$("#ctaModal").modal("show")
+	$("#ctaModalThema").val(thema)
+	$("#ctaModal form").on("submit", onCtaModalSubmit)
+}
+
+const onCtaModalSubmit = async function(evt){
+	if (evt && evt.hasOwnProperty('preventDefault')){
+		evt.preventDefault();
+	}
+    let modal = document.getElementById("ctaModal")
+	let url = modal.getAttribute("data-ajax-action")
+	let form = document.querySelector("#ctaModal form")
+	let formData = new FormData(form)
+	let response = await fetch(url, {
+		method: "POST",
+		body: formData
+	})
+	let content = await response.text()
+	$("#ctaModalBody").html(content)
+	$("#ctaModal form").on("submit", onCtaModalSubmit)
+}
+document.addEventListener("DOMContentLoaded", function(){
+	$("button[target=ctaModal]").on("click", onCtaModalLoad)
+})
+
+// Modal-Ajax-Kontaktformular
+```
